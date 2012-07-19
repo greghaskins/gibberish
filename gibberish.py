@@ -9,7 +9,7 @@ initial_consonants = (set(string.ascii_lowercase) - set('aeiou')
                       | set(['bl', 'br', 'cl', 'cr', 'dr', 'fl',
                              'fr', 'gl', 'gr', 'pl', 'pr', 'sk',
                              'sl', 'sm', 'sn', 'sp', 'st', 'str',
-                             'sw', 'tr'])
+                             'sw', 'tr', 'ch', 'sh'])
                       )
 
 final_consonants = (set(string.ascii_lowercase) - set('aeiou')
@@ -17,7 +17,7 @@ final_consonants = (set(string.ascii_lowercase) - set('aeiou')
                     - set('qxcsj')
                     # crunchy clusters
                     | set(['ct', 'ft', 'mp', 'nd', 'ng', 'nk', 'nt',
-                           'pt', 'sk', 'sp', 'ss', 'st'])
+                           'pt', 'sk', 'sp', 'ss', 'st', 'ch', 'sh'])
                     )
 
 vowels = 'aeiou' # we'll keep this simple
