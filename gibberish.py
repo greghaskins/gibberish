@@ -1,28 +1,41 @@
 #!/usr/bin/env python
 import string
 import random
+import itertools
 
-__all__ = ('generate_word', 'generate_words')
+__all__ = ('list_all_words', 'generate_word', 'generate_words')
 
-initial_consonants = list(set(string.ascii_lowercase) - set('aeiou')
+vowels = list(set('aeiou')
+          | set("""
+          ai au aw ay ea ee eu ew ey ia ie igh oa oe oi oo ou ow oy ue ui y
+          """.split()))
+
+initial_consonants = list(set(string.ascii_lowercase) - set(vowels)
                       # remove those easily confused with others
                       - set('qxc')
                       # add some crunchy clusters
-                      | set(['bl', 'br', 'cl', 'cr', 'dr', 'fl',
-                             'fr', 'gl', 'gr', 'pl', 'pr', 'sk',
-                             'sl', 'sm', 'sn', 'sp', 'st', 'str',
-                             'sw', 'tr', 'ch', 'sh'])
+                      | set("""
+                      bl br ch cl cr dr dw fl fr gl gr pl pr qu sc sch scr sh
+                      shr sk sl sm sn sp sph spl spr squ st str sw thr tr tw
+                      """.split())
                       )
 
-final_consonants = list(set(string.ascii_lowercase) - set('aeiou')
+final_consonants = list(set(string.ascii_lowercase) - set(vowels)
                     # remove the confusables
                     - set('qxcsj')
                     # crunchy clusters
-                    | set(['ct', 'ft', 'mp', 'nd', 'ng', 'nk', 'nt',
-                           'pt', 'sk', 'sp', 'ss', 'st', 'ch', 'sh'])
+                    | set("""
+                    ch ck ct ft ld lf lk ll lm lp lt mp nd ng nk nt pt sh sk sp
+                    ss st tch
+                    """.split())
                     )
 
-vowels = 'aeiou'
+
+def list_all_words():
+    """Returns an iterable of all possible pseudo-words."""
+    return itertools.imap(''.join, itertools.product(initial_consonants,
+                                                     vowels,
+                                                     final_consonants))
 
 
 def generate_word():
