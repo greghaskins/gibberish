@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 import string
 import random
+import itertools
 
-__all__ = ('generate_word', 'generate_words')
+__all__ = ('list_all_words', 'generate_word', 'generate_words')
 
 vowels = list(set('aeiou')
           | set("""
@@ -29,6 +30,12 @@ final_consonants = list(set(string.ascii_lowercase) - set(vowels)
                     """.split())
                     )
 
+
+def list_all_words():
+    """Returns an iterable of all possible pseudo-words."""
+    return itertools.imap(''.join, itertools.product(initial_consonants,
+                                                     vowels,
+                                                     final_consonants))
 
 
 def generate_word():
