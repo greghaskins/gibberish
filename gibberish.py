@@ -22,28 +22,39 @@ final_consonants = list(set(string.ascii_lowercase) - set('aeiou')
                            'pt', 'sk', 'sp', 'ss', 'st', 'ch', 'sh'])
                     )
 
-vowels = 'aeiou'
+vowels = list('aeiou') + ['oo']  # "oo" because google
 
 
-def generate_word():
-    """Returns a random consonant-vowel-consonant pseudo-word."""
-    return ''.join(random.choice(s) for s in (initial_consonants,
-                                              vowels,
-                                              final_consonants))
+def generate_word(wc):
+    """Returns a random consonant-(vowel-consonant)*wc pseudo-word."""
+    letter_list = [initial_consonants]
+    for i in range(wc):
+        letter_list.extend([vowels, final_consonants])
+    return ''.join(random.choice(s) for s in letter_list)
 
 
-def generate_words(wordcount):
+def generate_words(wordcount, word_length):
     """Returns a list of ``wordcount`` pseudo-words."""
-    return [generate_word() for _ in xrange(wordcount)]
+    # range for Python 3 compatibility
+    return [generate_word(word_length) for _ in range(wordcount)]
 
 
 def console_main():
-    import sys
-    try:
-        wordcount = int(sys.argv[1])
-    except (IndexError, ValueError):
-        wordcount = 1
-    print(' '.join(generate_words(wordcount)))
+    import argparse
+    len_options = {'small': 1, 'medium': 2, 'large': 3}
+    parser = argparse.ArgumentParser(description='Generate gibberish!')
+    parser.add_argument(
+        "wordcount", type=int, default=1, nargs='?',
+        help="Number of words to print.")
+
+    parser.add_argument(
+        "-l", "--word_length", type=str, default='small', metavar='',
+        choices=['small', 'medium', 'large'],
+        help="Length of the words")
+    args = parser.parse_args()
+
+    print(' '.join(generate_words(
+        args.wordcount, len_options[args.word_length])))
 
 
 if __name__ == '__main__':
