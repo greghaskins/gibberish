@@ -25,7 +25,7 @@ final_consonants = list(set(string.ascii_lowercase) - set('aeiou')
 vowels = list('aeiou') + ['oo']  # "oo" because google
 
 
-def generate_word(wc):
+def generate_word(wc=1):
     """Returns a random consonant-(vowel-consonant)*wc pseudo-word."""
     letter_list = [initial_consonants]
     for i in range(wc):
@@ -33,10 +33,10 @@ def generate_word(wc):
     return ''.join(random.choice(s) for s in letter_list)
 
 
-def generate_words(wordcount, word_length):
+def generate_words(wordcount=1, word_length=1):
     """Returns a list of ``wordcount`` pseudo-words."""
     # range for Python 3 compatibility
-    return [generate_word(word_length) for _ in range(wordcount)]
+    return [generate_word(wc=word_length) for _ in range(wordcount)]
 
 
 def console_main():
