@@ -42,8 +42,8 @@ def generate_words(wordcount):
 def parser_setup():
     """Instantiate and return an ArgumentParser instance."""
     ap = argparse.ArgumentParser(description=__doc__)
-    ap.add_argument("wordcount", nargs="?", default=3, type=int,
-                    help="Number of words to generate (default: %(default)s).")
+    ap.add_argument('wordcount', nargs='?', default=3, type=int,
+                    help='Number of words to generate (default: %(default)s).')
     args = ap.parse_args()
 
     return args
