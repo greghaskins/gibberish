@@ -1,6 +1,8 @@
 #!/usr/bin/env python
-import string
+"""Python pseudo-word generator."""
+import argparse
 import random
+import string
 
 __all__ = ('generate_word', 'generate_words')
 
@@ -37,13 +39,19 @@ def generate_words(wordcount):
     return [generate_word() for _ in xrange(wordcount)]
 
 
+def parser_setup():
+    """Instantiate and return an ArgumentParser instance."""
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("wordcount", nargs="?", default=3, type=int,
+                    help="Number of words to generate (default: %(default)s).")
+    args = ap.parse_args()
+
+    return args
+
+
 def console_main():
-    import sys
-    try:
-        wordcount = int(sys.argv[1])
-    except (IndexError, ValueError):
-        wordcount = 1
-    print(' '.join(generate_words(wordcount)))
+    args = parser_setup()
+    print(' '.join(generate_words(args.wordcount)))
 
 
 if __name__ == '__main__':
