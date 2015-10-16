@@ -4,23 +4,23 @@ import random
 
 __all__ = ('generate_word', 'generate_words')
 
-initial_consonants = list(set(string.ascii_lowercase) - set('aeiou')
-                      # remove those easily confused with others
-                      - set('qxc')
-                      # add some crunchy clusters
-                      | set(['bl', 'br', 'cl', 'cr', 'dr', 'fl',
-                             'fr', 'gl', 'gr', 'pl', 'pr', 'sk',
-                             'sl', 'sm', 'sn', 'sp', 'st', 'str',
-                             'sw', 'tr', 'ch', 'sh'])
-                      )
+initial_consonants = list(set(string.ascii_lowercase) - set('aeiou') -
+                          # remove those easily confused with others
+                          set('qxc') |
+                          # add some crunchy clusters
+                          set(['bl', 'br', 'cl', 'cr', 'dr', 'fl',
+                               'fr', 'gl', 'gr', 'pl', 'pr', 'sk',
+                               'sl', 'sm', 'sn', 'sp', 'st', 'str',
+                               'sw', 'tr', 'ch', 'sh'])
+                          )
 
-final_consonants = list(set(string.ascii_lowercase) - set('aeiou')
-                    # remove the confusables
-                    - set('qxcsj')
-                    # crunchy clusters
-                    | set(['ct', 'ft', 'mp', 'nd', 'ng', 'nk', 'nt',
-                           'pt', 'sk', 'sp', 'ss', 'st', 'ch', 'sh'])
-                    )
+final_consonants = list(set(string.ascii_lowercase) - set('aeiou') -
+                        # remove the confusables
+                        set('qxcsj') |
+                        # add some crunchy clusters
+                        set(['ct', 'ft', 'mp', 'nd', 'ng', 'nk', 'nt',
+                             'pt', 'sk', 'sp', 'ss', 'st', 'ch', 'sh'])
+                        )
 
 vowels = 'aeiou'
 
