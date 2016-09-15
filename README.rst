@@ -23,3 +23,8 @@ It also works as a console script::
   strit druf doct vel dosk flomp
   ~$ gibberish
   brank
+  ~$ gibberish 1 -l large
+  fabaduk
+  ~$ gibberish 2 -l medium
+  voskot koontan
+
