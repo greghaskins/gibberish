@@ -1,9 +1,3 @@
-# Copyright YPlan 2016
-# Under MIT license
-
-# Use PyTest to run this
-# pytest ./tests.py
-
 import gibberish
 
 
