@@ -4,7 +4,7 @@ from setuptools import setup
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
-with open(os.path.join(base_dir, 'README')) as fp:
+with open(os.path.join(base_dir, 'README.rst')) as fp:
     long_description = fp.read()
 
 setup(
