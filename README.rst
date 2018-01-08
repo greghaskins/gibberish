@@ -23,3 +23,10 @@ It also works as a console script::
   strit druf doct vel dosk flomp
   ~$ gibberish
   brank
+
+Installation
+------------
+
+To install the ``gibberish`` module and console script globally, clone this repository and run:
+
+  ~$ python setup.py install
