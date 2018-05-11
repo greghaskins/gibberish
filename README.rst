@@ -40,8 +40,8 @@ Updates
 -------
 
 - (2017.5.11)
-  - Analyze the components from CMUdict (``nltk.corpus.cmudict``) entries.
-  - Use ``secrets`` module if Python version 3.6 or later.
+   - Analyze the components from CMUdict (``nltk.corpus.cmudict``) entries.
+   - Use ``secrets`` module if Python version 3.6 or later.
 
 Contributions
 -------------
