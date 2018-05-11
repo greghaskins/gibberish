@@ -32,11 +32,16 @@ class Gibberish:
 
         self.vowels = list(set(sum(components['vowels'], []))) # "oo" because google
 
-    def generate_word(self, vowel_consonant_repeats=1):
+    def generate_word(self, vowel_consonant_repeats=1, start_vowel=False, end_vowel=False):
         """Returns a random consonant-(vowel-consonant)*wc pseudo-word."""
-        letter_list = [self.initial_consonants]
+        if not start_vowel:
+            letter_list = [self.initial_consonants]
+        else:
+            letter_list = []
         for i in range(vowel_consonant_repeats):
             letter_list.extend([self.vowels, self.final_consonants])
+        if end_vowel:
+            letter_list.pop()
         return ''.join(choice(s) for s in letter_list)
 
     def generate_words(self, wordcount=1, vowel_consonant_repeats=1):

@@ -13,8 +13,10 @@ Usage
   >>> gib = Gibberish()
   >>> gib.generate_word()
   'zept'
-  >>> gib.generate_word()
-  'prast'
+  >>> gib.generate_word(start_vowel=True)
+  'ientz'
+  >>> gib.generate_word(end_vowel=True)
+  'twae'
   >>> gib.generate_words(3)
   ['sqiounn', 'nuil', 'hydrieucks']
 
