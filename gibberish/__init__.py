@@ -47,12 +47,12 @@ class Gibberish:
     def generate_words(self, wordcount=1, vowel_consonant_repeats=1):
         """Returns a list of ``wordcount`` pseudo-words."""
         # range for Python 3 compatibility
-        return [self.generate_word(vowel_consonant_repeats=vowel_consonant_repeats) for _ in range(wordcount)]
+        return [self.generate_word(vowel_consonant_repeats=vowel_consonant_repeats if vowel_consonant_repeats else choice(range(1,4))) for _ in range(wordcount)]
 
 
 def console_main():
     import argparse
-    len_options = {'small': 1, 'medium': 2, 'large': 3}
+    len_options = {'random': 0, 'small': 1, 'medium': 2, 'large': 3}
     parser = argparse.ArgumentParser(description='Generate gibberish!')
     parser.add_argument(
         "wordcount", type=int, default=1, nargs='?',
@@ -60,7 +60,7 @@ def console_main():
 
     parser.add_argument(
         "-l", "--word_length", type=str, default='small', metavar='',
-        choices=['small', 'medium', 'large'],
+        choices=['random', 'small', 'medium', 'large'],
         help="Length of the words")
     args = parser.parse_args()
 
