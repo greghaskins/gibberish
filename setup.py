@@ -1,37 +1,37 @@
 import os
-try:
-    # use setuptools if available
-    from setuptools import setup
-    kwargs = {
-        'entry_points': {'console_scripts':
-            'gibberish = gibberish:console_main',
-        }
-    }
-except ImportError:
-    # fall back to distutils
-    from distutils import setup
-    kwargs = {}
 
+from setuptools import setup
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 
+with open(os.path.join(base_dir, 'README.rst')) as fp:
+    long_description = fp.read()
+
 setup(
-    name='Gibberish',
+    name='gibberish',
     description="A pseudo-word generator",
-    version='0.3',
+    version='0.3.1',
     author='Gregory Haskins',
     author_email='greg@greghaskins.com',
     url='https://github.com/greghaskins/gibberish',
     packages=('gibberish',),
     license='MIT License',
-    long_description=open(os.path.join(base_dir, 'README.rst')).read(),
+    long_description=long_description,
     install_requires=['PyYAML'],
     package_data={
         'gibberish': ['database/*'],
     },
-    # include_package_data=True,
     extras_require={
         'dev': ['nltk']
-                   },
-    **kwargs
+    },
+    classifiers=[
+        'Intended Audience :: Developers',
+        'License :: OSI Approved :: MIT License',
+        'Natural Language :: English',
+        'Programming Language :: Python :: 2',
+        'Programming Language :: Python :: 3',
+    ],
+    entry_points={
+        'console_scripts': 'gibberish = gibberish:console_main',
+    }
 )
