@@ -10,13 +10,14 @@ with open(os.path.join(base_dir, 'README.rst')) as fp:
 setup(
     name='gibberish',
     description="A pseudo-word generator",
-    version='0.3.1',
+    version='0.4.0',
     author='Gregory Haskins',
     author_email='greg@greghaskins.com',
     url='https://github.com/greghaskins/gibberish',
     packages=('gibberish',),
     license='MIT License',
     long_description=long_description,
+    long_description_content_type='text/x-rst',
     install_requires=['PyYAML'],
     package_data={
         'gibberish': ['database/*'],
